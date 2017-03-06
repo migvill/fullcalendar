@@ -1166,7 +1166,8 @@ Grid.mixin({
 
 	// A cmp function for determining which segments should take visual priority
 	compareEventSegs: function(seg1, seg2) {
-		return seg1.eventStartMS - seg2.eventStartMS || // earlier events go first
+		return (typeof seg1.event.eventPriority !== 'undefined' && typeof seg2.event.eventPriority !== 'undefined' ? seg1.event.eventPriority - seg2.event.eventPriority : 0) || // use event priority first
+			seg1.eventStartMS - seg2.eventStartMS || // earlier events go first
 			seg2.eventDurationMS - seg1.eventDurationMS || // tie? longer events go first
 			seg2.event.allDay - seg1.event.allDay || // tie? put all-day events first (booleans cast to 0/1)
 			compareByFieldSpecs(seg1.event, seg2.event, this.view.eventOrderSpecs);
@@ -1277,4 +1278,3 @@ function getDraggedElMeta(el) {
 
 	return { eventProps: eventProps, startTime: startTime, duration: duration, stick: stick };
 }
-
