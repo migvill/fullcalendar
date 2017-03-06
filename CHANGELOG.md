@@ -1,3 +1,9 @@
+v3.2.1 (2017-03-06)
+-------------------
+
+Features:
+
+- Allow ordering events on grid by `event.eventPriority`
 
 v3.2.0 (2017-02-14)
 -------------------
@@ -894,7 +900,7 @@ v1.4.3 (2009-12-22)
 
 - added destroy method
 - Google Calendar event pages respect currentTimezone
-- caching now handled by jQuery's ajax	
+- caching now handled by jQuery's ajax
 - protection from setting aspectRatio to zero
 - bugfixes
 	- parseISO8601 and DST caused certain events to display day before
